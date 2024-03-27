@@ -31,8 +31,8 @@ public class ContactServiceImpl implements ContactService{
     }
 
     @Override
-    public Contact getContact(Long id) {
-        return contactRepository.getReferenceById(id);
+    public ContactDto getContact(Long id) {
+        return convertToDto.apply(contactRepository.getReferenceById(id));
     }
 
     @Override
@@ -43,11 +43,12 @@ public class ContactServiceImpl implements ContactService{
     @Override
     public void anonymize(Long id){
         String randomId =  String.valueOf(new Random().nextInt(10000,20000));
-        Contact contact = getContact(id);
+        Contact contact = contactRepository.getReferenceById(id);
         contact.setName("Anonym" + randomId);
         contact.setEmail("anonym." + randomId + "@contact.demo.hu");
         contact.setMothers_name("Mother of " + randomId);
         contact.setSocial_number("00" + randomId);
+        contact.setStatus("I");
 
         contactRepository.save(contact);
     }

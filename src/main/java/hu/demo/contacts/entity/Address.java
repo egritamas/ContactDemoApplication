@@ -15,7 +15,7 @@ public class Address {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator="address_id_seq")
-    private long id;
+    private Long id;
 
     @Column(name = "zip_code", nullable = true)
     String zip_code;

@@ -15,7 +15,7 @@ public class Phone {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator="phone_id_seq")
-    private long id;
+    private Long id;
     @Column(name = "phone_number", nullable = true)
     private String phone_number;
     @Column(name = "type", nullable = true)

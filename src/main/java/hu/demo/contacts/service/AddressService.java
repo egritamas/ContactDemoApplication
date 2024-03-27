@@ -10,6 +10,7 @@ public interface AddressService {
 
     Function<Address, AddressDto> convertToDto = a ->
             AddressDto.builder()
+                    .id(a.getId())
                     .city(a.getCity())
                     .street(a.getStreet())
                     .house_number(a.getHouse_number())
@@ -19,6 +20,7 @@ public interface AddressService {
 
     Function <AddressDto, Address> convertToEntity = a ->
             Address.builder()
+                    .id(a.getId())
                     .zip_code(a.getZip_code())
                     .city(a.getCity())
                     .house_number(a.getHouse_number())

@@ -16,49 +16,119 @@
     <form action="#" th:action="@{/saveContact}" th:object="${contact}"
           method="POST">
 
-        <!-- Add hidden form field to handle update -->
-        <input type="hidden" th:field="*{id}" />
+        <input type="hidden" th:field="*{id}"/>
 
-        <input type="text" th:field="*{name}" class="form-control mb-4 col-4">
+        <label>Name</label>
+        <input type="text" th:field="*{name}" class="form-control mb-4 col-8">
         <span class="validationError"
               th:if="${#fields.hasErrors('name')}"
               th:errors="*{name}">Contact name error</span>
-
-        <input type="text" th:field="*{email}" class="form-control mb-4 col-4">
+        <label>Email</label>
+        <input type="text" th:field="*{email}" class="form-control mb-4 col-8">
         <span class="validationError"
               th:if="${#fields.hasErrors('email')}"
               th:errors="*{email}">Email error</span>
-
-        <input type="text" th:field="*{mothers_name}" placeholder="Mother's name" class="form-control mb-4 col-4">
+        <label>Mother's name</label>
+        <input type="text" th:field="*{mothers_name}" placeholder="Mother's name" class="form-control mb-4 col-8">
         <span class="validationError"
               th:if="${#fields.hasErrors('mothers_name')}"
               th:errors="*{mothers_name}">Contact name error</span>
-
-        <input type="text" th:field="*{birth_date}" placeholder="Birth date" class="form-control mb-4 col-4">
-
-        <input type="text" th:field="*{social_number}" placeholder="Social number" class="form-control mb-4 col-4">
+        <label>Birth date</label>
+        <input type="text" th:field="*{birth_date}" placeholder="Birth date" class="form-control mb-4 col-8">
+        <label>Social number</label>
+        <input type="text" th:field="*{social_number}" placeholder="Social number" class="form-control mb-4 col-8">
         <span class="validationError"
               th:if="${#fields.hasErrors('social_number')}"
               th:errors="*{social_number}">Contact name error</span>
-
-        <input type="text" th:field="*{tax_number}" placeholder="Tax number" class="form-control mb-4 col-4">
+        <label>Tax number</label>
+        <input type="text" th:field="*{tax_number}" placeholder="Tax number" class="form-control mb-4 col-8">
         <span class="validationError"
               th:if="${#fields.hasErrors('tax_number')}"
               th:errors="*{tax_number}">Contact name error</span>
 
+        <h4>Contact phone</h4>
+
+        <table style="width:90%" border="0"
+               class="table">
+            <thead>
+            <tr>
+                <th>Phone</th>
+                <th>Type</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="phone : *{phones}">
+                <td>
+                    <input type="text" th:value="${phone.phone}" placeholder="phone number"
+                           class="form-control mb-4 col-8">
+                </td>
+                <td>
+                    <input type="text" th:value="${phone.type}" placeholder="type"
+                           class="form-control mb-4 col-8">
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <h4>Contact Address</h4>
+
+        <table style="width:90%" border="0"
+               class="table">
+            <thead>
+            <tr>
+                <th>Zip Code</th>
+                <th>City</th>
+                <th>Street</th>
+                <th>House number</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="address : *{addresses}">
+                <td>
+                    <input type="text" th:value="${address.zip_code}" placeholder="zip code"
+                           class="form-control mb-4 col-8">
+                </td>
+                <td>
+                    <input type="text" th:value="${address.city}" placeholder="city"
+                           class="form-control mb-4 col-8">
+                </td>
+                <td>
+                    <input type="text" th:value="${address.street}" placeholder="street"
+                           class="form-control mb-4 col-8">
+                </td>
+                <td>
+                    <input type="text" th:value="${address.house_number}" placeholder="house number"
+                           class="form-control mb-4 col-8">
+                </td>
+
+            </tr>
+            </tbody>
+        </table>
         <button type="submit" class="btn btn-info col-2"> Update contact</button>
+    </form>
 
+    <hr>
+    <h4>Add phone</h4>
+    <form action="#" th:action="@{/addPhone}" th:object="${phoneDto}"
+          method="POST">
 
+        <input type="hidden" th:field="*{id}" value="{contact.id}"/>
+
+        <input type="text" th:field="*{phone}" placeholder="phone number"
+               class="form-control mb-4 col-4">
+        <input type="text" th:field="*{type}" placeholder="type"
+               class="form-control mb-4 col-2">
+
+        <button type="submit" class="btn btn-info col-2"> Add</button>
     </form>
     <hr>
-
     <h4>Anonymize Contact</h4>
 
     <a th:href="@{/anonymizeContact/{id}(id=${contact.id})}"
        class="btn btn-danger">Anonymize</a>
 
     <hr>
-    <a th:href = "@{/}"> Back to Contact List</a>
+    <a th:href="@{/}"> Back to Contact List</a>
 </div>
 </body>
 </html>

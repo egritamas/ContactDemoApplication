@@ -10,6 +10,7 @@ public interface PhoneService {
 
     Function<Phone, PhoneDto> convertToDto = p ->
             PhoneDto.builder()
+                    .id(p.getId())
                     .phone(p.getPhone_number())
                     .type(p.getType())
                     .contact_id(p.getCid())
@@ -17,6 +18,7 @@ public interface PhoneService {
 
     Function <PhoneDto, Phone> convertToEntity = p ->
             Phone.builder()
+                    .id(p.getId())
                     .phone_number(p.getPhone())
                     .type(p.getType())
                     .cid(p.getContact_id())

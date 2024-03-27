@@ -1,7 +1,10 @@
 package hu.demo.contacts.controller;
 
 import hu.demo.contacts.dto.ContactDto;
+import hu.demo.contacts.dto.PhoneDto;
+import hu.demo.contacts.service.AddressService;
 import hu.demo.contacts.service.ContactService;
+import hu.demo.contacts.service.PhoneService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,6 +16,10 @@ import org.springframework.ui.Model;
 public class ContactController {
 
     @Autowired private ContactService contactService;
+
+    @Autowired private PhoneService phoneService;
+
+    @Autowired private AddressService addressService;
 
     @GetMapping("/")
     public String viewHomePage(Model model)
@@ -39,7 +46,12 @@ public class ContactController {
 
     @GetMapping("/contact/{id}")
     public String contactDetails(@PathVariable Long id, Model model){
-        model.addAttribute("contact", contactService.getContact(id));
+        ContactDto contact =  contactService.getContact(id);
+        contact.setPhones(phoneService.getPhonesByContactId(contact.getId()));
+        contact.setAddresses(addressService.getAddressesByContactId(contact.getId()));
+        model.addAttribute("contact", contact);
+        model.addAttribute("phoneDto", new PhoneDto());
+
         return "contactdetails";
     }
 
@@ -56,6 +68,14 @@ public class ContactController {
     public   String deleteContact(@PathVariable Long id, Model model){
         contactService.delete(id);
         return "redirect:/";
+    }
+
+    @PostMapping("/addPhone")
+    public   String addPhone(Model model, @ModelAttribute PhoneDto phone){
+        String id = (String)model.getAttribute("cid");
+
+        phoneService.addPhone(phone);
+        return "redirect:/contact/{" + id + "}";
     }
 
     @GetMapping("/anonymizeContact/{id}")

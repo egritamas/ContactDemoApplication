@@ -41,7 +41,7 @@ public interface ContactService {
 
     public void saveContact(ContactDto contact);
 
-    public Contact getContact(Long id);
+    public ContactDto getContact(Long id);
 
     public void delete(Long id);
 

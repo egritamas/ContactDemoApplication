@@ -16,28 +16,30 @@
 
     <form action="#" th:action="@{/addcontact}" th:object="${newcontact}"
           method="POST">
+        <label>Name</label>
         <input type="text" th:field="*{name}" placeholder="Contact Name"
                class="form-control mb-4 col-4" required>
         <span class="validationError"
               th:if="${#fields.hasErrors('name')}"
               th:errors="*{name}">Contact name error</span>
-
+        <label>Email</label>
         <input type="text" th:field="*{email}" placeholder="Contact Email" class="form-control mb-4 col-4" required>
         <span class="validationError"
               th:if="${#fields.hasErrors('email')}"
               th:errors="*{email}">Email error</span>
+        <label>Mother's name</label>
         <input type="text" th:field="*{mothers_name}" placeholder="Mother's name" class="form-control mb-4 col-4">
         <span class="validationError"
               th:if="${#fields.hasErrors('mothers_name')}"
               th:errors="*{mothers_name}">Contact name error</span>
-
-        <input type="text" th:field="*{birth_date}" placeholder="Birth date" class="form-control mb-4 col-4">
-
+        <label>Birth date</label>
+        <input type="text" th:field="*{birth_date}" placeholder="Birth date (yyyy-MM-dd)" class="form-control mb-4 col-4">
+        <label>Social number</label>
         <input type="text" th:field="*{social_number}" placeholder="Social number" class="form-control mb-4 col-4">
         <span class="validationError"
               th:if="${#fields.hasErrors('social_number')}"
               th:errors="*{social_number}">Contact name error</span>
-
+        <label>Tax number</label>
         <input type="text" th:field="*{tax_number}" placeholder="Tax number" class="form-control mb-4 col-4">
         <span class="validationError"
               th:if="${#fields.hasErrors('tax_number')}"
