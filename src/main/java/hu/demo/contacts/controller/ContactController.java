@@ -43,7 +43,7 @@ public class ContactController {
     }
 
     @PostMapping("/addcontact")
-    public String createContact(@RequestBody @Valid ContactDto contact, BindingResult result, Model model){
+    public String createContact(@Valid ContactDto contact, BindingResult result, Model model){
         if (result.hasErrors()) {
             model.addAttribute("newcontact", contact);
             return "redirect:newcontact";
@@ -71,7 +71,7 @@ public class ContactController {
     }
 
     @PostMapping("/saveContact")
-    public String saveContact(@RequestBody @Valid ContactDto contact, BindingResult result, Model model){
+    public String saveContact(@Valid ContactDto contact, BindingResult result, Model model){
         if (result.hasErrors()) {
             model.addAttribute("contact", contact);
             PhoneDto phone = new PhoneDto();
