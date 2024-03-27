@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Contacts</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          crossorigin="anonymous">
+</head>
+<body>
+<div class="container my-2" align="center">
+    <h2>Error</h2>
+    <h3>Opps. Something went wrong. :(</h3>
+
+<!--    <img th:src="@{resources/static/images/error-icon.png}"-->
+<!--         width="100px" height="100px" />-->
+    <p>There seems to be a problem with the page you requested
+        (<span th:text="${path}"></span>).</p>
+    <p th:text="${'The status code is ' + status
+       + ', which means that the page was ' + error + '.'}"></p>
+    <p th:text="${'Further details: ' + message + '.'}"></p>
+    <a class="btn" href="/">Back to Contact List</a>
+</div>
+</body>
+
+
+
+</div>
+</body>
+</html>

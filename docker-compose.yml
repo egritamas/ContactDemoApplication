@@ -1,0 +1,34 @@
+version: '3.9'
+services:
+  postgres_contact:
+    image: library/postgres:14-alpine
+    container_name: postgres_contact
+    restart: always
+    ports:
+      - "5432:5432"
+    volumes:
+      - pg_data:/var/lib/postgresql14/data
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=admin
+
+  app:
+    image: 'hu.demo/contacts'
+    build:
+      context: .
+    ports:
+      - "8080:8080"
+      - "5005:5005"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_DB_PORT=5432
+      - POSTGRES_DB_HOST=postgres_contact
+      - JAVA_TOOL_OPTIONS="-agentlib:jdwp=transport=dt_socket,address=*:5005,server=y,suspend=n"
+    depends_on:
+      - postgres_contact
+    links:
+      - postgres_contact
+volumes:
+  pg_data:
+    driver: local

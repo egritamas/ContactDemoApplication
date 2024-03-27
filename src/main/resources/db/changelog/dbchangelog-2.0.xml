@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
+        http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd">
+    <changeSet  id="1"  author="postgres">
+        <sql>
+            INSERT INTO public.contact
+            (id, "name", birth_date, mothers_name, social_number, tax_number, email, status)
+            VALUES(nextval('public.contact_id_seq'), 'Tamas', '1982-06-30', 'Gipsz Zsuzsanna', '235221198131', '15308744241 ', 'egri.tamas@demo.hu', 'A');
+
+            INSERT INTO public.phone
+            (id, phone_number, cid, "type")
+            VALUES(nextval('public.phone_id_seq'), '+36304513668', currval('contact_id_seq'), 'mobile');
+
+
+            INSERT INTO public.phone
+            (id, phone_number, cid, "type")
+            VALUES(nextval('public.phone_id_seq'), '+36304544444', currval('contact_id_seq'), 'work');
+
+
+            INSERT INTO public.address
+            (id, zip_code, city, street, house_number, cid)
+            VALUES(nextval('public.address_id_seq'), '1144', 'Budapest', 'Kondorosi ut', '13', currval('contact_id_seq'));
+
+
+            INSERT INTO public.contact
+            (id, "name", birth_date, mothers_name, social_number, tax_number, email, status)
+            VALUES(nextval('public.contact_id_seq'), 'Szabolcs', '1982-06-30', 'Gipsz Zsuzsanna', '235221198132', '15308844241', 'egri.szabolcs@demo.hu', 'A');
+
+
+            INSERT INTO public.phone
+            (id, phone_number, cid, "type")
+            VALUES(nextval('public.address_id_seq'), '+363012345323', currval('contact_id_seq'), 'mobile');
+
+            INSERT INTO public.address
+            (id, zip_code, city, street, house_number, cid)
+            VALUES(nextval('public.address_id_seq'), '5600', 'Bekescsaba', 'ifjusag utca', '1', currval('contact_id_seq'));
+
+        </sql>
+
+    </changeSet>
+</databaseChangeLog>

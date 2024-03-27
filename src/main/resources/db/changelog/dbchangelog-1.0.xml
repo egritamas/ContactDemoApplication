@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
+        http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd">
+    <changeSet  id="1"  author="postgres">
+        <createTable  tableName="contact">
+            <column autoIncrement="true" name="id"  type="int">
+                <constraints  primaryKey="true"  nullable="false"/>
+            </column>
+            <column  name="name"  type="varchar(50)">
+                <constraints  nullable="false"/>
+            </column>
+            <column  name="birth_date"  type="date">
+                <constraints  nullable="true"/>
+            </column>
+            <column  name="mothers_name"  type="varchar(50)">
+                <constraints  nullable="true"/>
+            </column>
+            <column  name="social_number"  type="varchar(12)">
+                <constraints  nullable="true"/>
+            </column>
+            <column  name="tax_number"  type="varchar(13)">
+                <constraints  nullable="true"/>
+            </column>
+            <column  name="email"  type="varchar(50)">
+                <constraints  nullable="false"/>
+            </column>
+            <column  name="status"  type="char(1)" />
+        </createTable>
+        <createTable  tableName="address">
+            <column autoIncrement="true" name="id"  type="int">
+                <constraints  primaryKey="true"  nullable="false"/>
+            </column>
+            <column  name="zip_code"  type="varchar(4)">
+                <constraints  nullable="false"/>
+            </column>
+            <column  name="city"  type="varchar(50)">
+                <constraints  nullable="true"/>
+            </column>
+            <column  name="street"  type="varchar(100)">
+                <constraints  nullable="true"/>
+            </column>
+            <column  name="house_number"  type="varchar(10)">
+                <constraints  nullable="true"/>
+            </column>
+            <column  name="cid"  type="int">
+                <constraints  nullable="false" foreignKeyName="fk_contact" references="contact(id)" />
+            </column>
+        </createTable>
+        <createTable  tableName="phone">
+            <column autoIncrement="true"     name="id"  type="int">
+                <constraints  primaryKey="true"  nullable="false"/>
+            </column>
+            <column  name="phone_number"  type="varchar(20)">
+                <constraints  nullable="false"/>
+            </column>
+            <column  name="type"  type="varchar(20)">
+                <constraints  nullable="false"/>
+            </column>
+            <column  name="cid"  type="int">
+                <constraints  nullable="false" foreignKeyName="fk_contact" references="contact(id)" />
+            </column>
+        </createTable>
+
+    </changeSet>
+</databaseChangeLog>
