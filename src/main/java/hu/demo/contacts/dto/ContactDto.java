@@ -8,6 +8,7 @@ import lombok.*;
 import java.util.Date;
 import java.util.List;
 
+@Data
 @Getter
 @Setter
 @Builder
@@ -26,7 +27,8 @@ public class ContactDto {
     @NotEmpty(message = "Social number cannot be empty and more than 12 character.")
     @Size(min = 2, max = 12)
     private String social_number;
-    @NotEmpty(message = "Tax number cannot be empty and more than 12 character.")
+    @NotEmpty(message = "Tax number cannot be empty and more than 13 character.")
+    @Size(min = 2, max = 13)
     private String tax_number;
     @Email(message = "Wrong e-mail")
     private String email;

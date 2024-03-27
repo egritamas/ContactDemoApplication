@@ -24,7 +24,7 @@
               th:if="${#fields.hasErrors('name')}"
               th:errors="*{name}">Contact name error</span>
         <label>Email</label>
-        <input type="text" th:field="*{email}" class="form-control mb-4 col-8">
+        <input type="email" th:field="*{email}" class="form-control mb-4 col-8">
         <span class="validationError"
               th:if="${#fields.hasErrors('email')}"
               th:errors="*{email}">Email error</span>
@@ -112,7 +112,7 @@
     <form action="#" th:action="@{/addPhone}" th:object="${phoneDto}"
           method="POST">
 
-        <input type="hidden" th:field="*{id}" value="{contact.id}"/>
+        <input type="hidden" th:field="*{contact_id}" value="${contact.id}"/>
 
         <input type="text" th:field="*{phone}" placeholder="phone number"
                class="form-control mb-4 col-4">
@@ -122,6 +122,26 @@
         <button type="submit" class="btn btn-info col-2"> Add</button>
     </form>
     <hr>
+
+    <h4>Add address</h4>
+    <form action="#" th:action="@{/addAddress}" th:object="${addressDto}"
+          method="POST">
+
+        <input type="hidden" th:field="*{contact_id}" value="${contact.id}"/>
+
+        <input type="text" th:field="*{zip_code}" placeholder="zip_code"
+               class="form-control mb-4 col-4">
+        <input type="text" th:field="*{city}" placeholder="city"
+               class="form-control mb-4 col-2">
+        <input type="text" th:field="*{street}" placeholder="street"
+               class="form-control mb-4 col-2">
+        <input type="text" th:field="*{house_number}" placeholder="house number"
+               class="form-control mb-4 col-2">
+
+        <button type="submit" class="btn btn-info col-2"> Add</button>
+    </form>
+    <hr>
+
     <h4>Anonymize Contact</h4>
 
     <a th:href="@{/anonymizeContact/{id}(id=${contact.id})}"

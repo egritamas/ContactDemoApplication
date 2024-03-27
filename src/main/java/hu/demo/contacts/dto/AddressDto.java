@@ -2,6 +2,7 @@ package hu.demo.contacts.dto;
 
 import lombok.*;
 
+@Data
 @Getter
 @Setter
 @Builder

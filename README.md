@@ -1,7 +1,7 @@
 #Contact Manager Demo Application
 
 ## Demo project for DPD
-### Installations steps
+
 
 Software tools
 
@@ -17,6 +17,7 @@ Software tools
 Git repository
 https://github.com/egritamas/ContactDemoApplication.git
 
+### Installations steps
 
 Init database:
 1. Run postgres standalone
@@ -27,9 +28,14 @@ Init database:
 6. Init database with sapmle data: ./mvnw liquibase:update
    - creates tables: contact, address, phone
    - add sample data for initial steps
-
+Init docker
 7. Create docker image
    - docker image build -t hu.demo/contacts .  
 8. Run application
    - docker-compose up
+Run
 9. localhost:8080
+
+### Screenshots
+
+ Directory: /resources/static/images/screenshots

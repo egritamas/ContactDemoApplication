@@ -23,7 +23,7 @@
               th:if="${#fields.hasErrors('name')}"
               th:errors="*{name}">Contact name error</span>
         <label>Email</label>
-        <input type="text" th:field="*{email}" placeholder="Contact Email" class="form-control mb-4 col-4" required>
+        <input type="email" th:field="*{email}" placeholder="Contact Email" class="form-control mb-4 col-4" required>
         <span class="validationError"
               th:if="${#fields.hasErrors('email')}"
               th:errors="*{email}">Email error</span>
