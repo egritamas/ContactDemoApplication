@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 public class Phone {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO, generator="phone_id_seq")
+    @GeneratedValue(strategy = GenerationType.AUTO, generator="phone_id_seq" )
     private Long id;
     @Column(name = "phone_number", nullable = true)
     private String phone_number;

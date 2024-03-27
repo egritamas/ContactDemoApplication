@@ -32,4 +32,5 @@ public interface PhoneService {
 
     public PhoneDto getPhone(Long id);
 
+    public void deleteContactPhones(Long id);
 }

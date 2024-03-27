@@ -26,7 +26,7 @@ Init database
 3. docker exec -it postgres /bin/sh
 4. psql --username postgres
 5. create database contacts;
-6. Init database with sapmle data: ./mvnw liquibase:update
+6. Init database with sample data: ./mvnw liquibase:update
    - creates tables: contact, address, phone
    - add sample data for initial steps 
    

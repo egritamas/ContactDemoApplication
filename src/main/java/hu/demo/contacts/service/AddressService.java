@@ -36,4 +36,6 @@ public interface AddressService {
 
     public AddressDto getAddress(Long id);
 
+    public void deleteAContactAddresses(Long id);
+
 }

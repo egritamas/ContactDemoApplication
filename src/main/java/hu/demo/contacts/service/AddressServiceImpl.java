@@ -1,7 +1,6 @@
 package hu.demo.contacts.service;
 
 import hu.demo.contacts.dto.AddressDto;
-import hu.demo.contacts.entity.Address;
 import hu.demo.contacts.repository.AddressRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,6 +13,11 @@ public class AddressServiceImpl implements AddressService {
 
     @Autowired
     AddressRepository addressRepository;
+
+    @Override
+    public void deleteAContactAddresses(Long cid) {
+        addressRepository.deleteByCid(cid);
+    }
 
     @Override
     public AddressDto saveAddress(AddressDto address) {

@@ -36,4 +36,9 @@ public class PhoneServiceImpl implements PhoneService {
                 phoneRepository.findByCid(id).stream().
                         map(convertToDto).collect(Collectors.toList());
     }
+
+    @Override
+    public void deleteContactPhones(Long cid) {
+        phoneRepository.deleteByCid(cid);
+    }
 }
