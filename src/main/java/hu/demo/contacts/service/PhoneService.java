@@ -8,7 +8,7 @@ import java.util.function.Function;
 
 public interface PhoneService {
 
-    Function<Phone, PhoneDto> convertToDto = p ->
+    public static Function<Phone, PhoneDto> convertToDto = p ->
             PhoneDto.builder()
                     .id(p.getId())
                     .phone(p.getPhone_number())
@@ -16,7 +16,7 @@ public interface PhoneService {
                     .contact_id(p.getCid())
                     .build();
 
-    Function <PhoneDto, Phone> convertToEntity = p ->
+    public static Function <PhoneDto, Phone> convertToEntity = p ->
             Phone.builder()
                     .id(p.getId())
                     .phone_number(p.getPhone())
@@ -28,7 +28,7 @@ public interface PhoneService {
 
     public List<PhoneDto> fetchPhones();
 
-    public void addPhone(PhoneDto phone);
+    public void savePhone(PhoneDto phone);
 
     public PhoneDto getPhone(Long id);
 

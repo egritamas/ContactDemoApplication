@@ -16,18 +16,18 @@ public class AddressServiceImpl implements AddressService {
     AddressRepository addressRepository;
 
     @Override
-    public void addAddress(Address address) {
-        addressRepository.save(address);
+    public void saveAddress(AddressDto address) {
+        addressRepository.save(convertToEntity.apply(address));
     }
 
     @Override
-    public List<Address> fetchAddresses() {
-        return (List<Address>) addressRepository.findAll();
+    public List<AddressDto> fetchAddresses() {
+        return (List<AddressDto>) addressRepository.findAll().stream().map(convertToDto).collect(Collectors.toList());
     }
 
     @Override
-    public Address getAddress(Long id) {
-        return addressRepository.getReferenceById(id);
+    public AddressDto getAddress(Long id) {
+        return convertToDto.apply(addressRepository.getReferenceById(id));
     }
 
     @Override

@@ -30,10 +30,10 @@ public interface AddressService {
 
     public List<AddressDto> getAddressesByContactId(Long id);
 
-    public List<Address> fetchAddresses();
+    public List<AddressDto> fetchAddresses();
 
-    public void addAddress(Address Address);
+    public void saveAddress(AddressDto address);
 
-    public Address getAddress(Long id);
+    public AddressDto getAddress(Long id);
 
 }

@@ -16,7 +16,7 @@ public class PhoneServiceImpl implements PhoneService {
     PhoneRepository phoneRepository;
 
     @Override
-    public void addPhone(PhoneDto phoneDto) {
+    public void savePhone(PhoneDto phoneDto) {
         phoneRepository.save(convertToEntity.apply(phoneDto));
     }
 

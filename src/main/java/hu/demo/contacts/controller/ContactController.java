@@ -12,6 +12,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
 
+import java.util.stream.Stream;
+
 @Controller
 public class ContactController {
 
@@ -61,6 +63,9 @@ public class ContactController {
             return "contactdetails";
         }
         contactService.saveContact(contact);
+        contact.getPhones().forEach(p -> phoneService.savePhone(p));
+        contact.getAddresses().forEach(a -> addressService.saveAddress(a));
+
         return "redirect:/";
     }
 
@@ -74,7 +79,7 @@ public class ContactController {
     public   String addPhone(Model model, @ModelAttribute PhoneDto phone){
         String id = (String)model.getAttribute("cid");
 
-        phoneService.addPhone(phone);
+        phoneService.savePhone(phone);
         return "redirect:/contact/{" + id + "}";
     }
 
