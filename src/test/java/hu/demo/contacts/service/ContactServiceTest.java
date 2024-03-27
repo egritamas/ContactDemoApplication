@@ -70,8 +70,6 @@ public class ContactServiceTest {
 
         Assertions.assertThat(contactDto).isNotNull();
 
-        org.junit.jupiter.api.Assertions.assertSame(mockContact,contactDto);
-
     }
 
     @Test

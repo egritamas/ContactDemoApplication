@@ -3,6 +3,7 @@ package hu.demo.contacts.controller;
 import hu.demo.contacts.dto.AddressDto;
 import hu.demo.contacts.dto.ContactDto;
 import hu.demo.contacts.dto.PhoneDto;
+import hu.demo.contacts.entity.Contact;
 import hu.demo.contacts.service.AddressService;
 import hu.demo.contacts.service.ContactService;
 import hu.demo.contacts.service.PhoneService;

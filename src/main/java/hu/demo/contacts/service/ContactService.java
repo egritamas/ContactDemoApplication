@@ -13,8 +13,8 @@ public interface ContactService {
 
     Function<Contact, ContactDto> convertToDto = c ->
             ContactDto.builder()
-                    .id(c.getId())
-                    .birth_date(new SimpleDateFormat("yyyy-MM-dd").format(c.getBirth_date()))
+                    .id(c.getId() )
+                    .birth_date(c.getBirth_date() == null ? null : new SimpleDateFormat("yyyy-MM-dd").format(c.getBirth_date()))
                     .name(c.getName())
                     .mothers_name(c.getMothers_name())
                     .social_number(c.getSocial_number())

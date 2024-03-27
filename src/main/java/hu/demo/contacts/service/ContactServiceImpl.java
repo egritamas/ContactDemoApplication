@@ -28,7 +28,11 @@ public class ContactServiceImpl implements ContactService {
 
     @Override
     public ContactDto getContact(Long id) {
-        return convertToDto.apply(contactRepository.getReferenceById(id));
+        Contact response = contactRepository.getReferenceById(id);
+        if (response != null) {
+            return convertToDto.apply(response);
+        }
+        return null;
     }
 
     @Override
