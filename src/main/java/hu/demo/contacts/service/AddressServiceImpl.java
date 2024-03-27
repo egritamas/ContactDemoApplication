@@ -16,8 +16,8 @@ public class AddressServiceImpl implements AddressService {
     AddressRepository addressRepository;
 
     @Override
-    public void saveAddress(AddressDto address) {
-        addressRepository.save(convertToEntity.apply(address));
+    public AddressDto saveAddress(AddressDto address) {
+        return convertToDto.apply(addressRepository.save(convertToEntity.apply(address)));
     }
 
     @Override

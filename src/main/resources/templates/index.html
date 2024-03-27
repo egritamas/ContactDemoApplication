@@ -34,7 +34,7 @@
         <tr th:each="contact:${contacts}">
             <td th:text="${contact.name}"></td>
             <td th:text="${contact.email}"></td>
-            <td th:text="${#dates.format(contact.birth_date, 'yyyy-MM-dd')}"></td>
+            <td th:text="${contact.birth_date}"></td>
             <td th:text="${contact.mothers_name}"></td>
             <td th:text="${contact.social_number}"></td>
             <td th:text="${contact.tax_number}"></td>

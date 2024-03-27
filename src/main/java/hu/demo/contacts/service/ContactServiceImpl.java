@@ -8,9 +8,10 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 @Service
-public class ContactServiceImpl implements ContactService{
+public class ContactServiceImpl implements ContactService {
 
     @Autowired
     private ContactRepository contactRepository;
@@ -21,13 +22,8 @@ public class ContactServiceImpl implements ContactService{
     }
 
     @Override
-    public void addContact(ContactDto contact) {
-        contactRepository.save(convertToEntity.apply(contact));
-    }
-
-    @Override
-    public List<Contact> fetchContacts() {
-        return (List<Contact>) contactRepository.findAll();
+    public List<ContactDto> fetchContacts() {
+        return contactRepository.findAll().stream().map(convertToDto).collect(Collectors.toList());
     }
 
     @Override
@@ -36,13 +32,16 @@ public class ContactServiceImpl implements ContactService{
     }
 
     @Override
-    public void saveContact(ContactDto contact) {
-        contactRepository.save(convertToEntity.apply(contact));
+    public ContactDto saveContact(ContactDto contact) {
+        Contact response = contactRepository.save(convertToEntity.apply(contact));
+        if (response != null) {
+            return convertToDto.apply(response);
+        } else return null;
     }
 
     @Override
-    public void anonymize(Long id){
-        String randomId =  String.valueOf(new Random().nextInt(10000,20000));
+    public void anonymize(Long id) {
+        String randomId = String.valueOf(new Random().nextInt(10000, 20000));
         Contact contact = contactRepository.getReferenceById(id);
         contact.setName("Anonym" + randomId);
         contact.setEmail("anonym." + randomId + "@contact.demo.hu");

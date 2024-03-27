@@ -32,7 +32,7 @@ public interface AddressService {
 
     public List<AddressDto> fetchAddresses();
 
-    public void saveAddress(AddressDto address);
+    public AddressDto saveAddress(AddressDto address);
 
     public AddressDto getAddress(Long id);
 

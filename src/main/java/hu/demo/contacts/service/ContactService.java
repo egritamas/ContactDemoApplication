@@ -35,11 +35,9 @@ public interface ContactService {
                     .status(c.getStatus())
                     .build();
 
-    public List<Contact> fetchContacts();
+    public List<ContactDto> fetchContacts();
 
-    public void addContact(ContactDto contact);
-
-    public void saveContact(ContactDto contact);
+    public ContactDto saveContact(ContactDto contact);
 
     public ContactDto getContact(Long id);
 
