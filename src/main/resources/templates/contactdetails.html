@@ -11,7 +11,7 @@
 <div class="container">
     <h1>Contact Management</h1>
     <hr>
-    <h2>Details</h2>
+    <h2>Contact Details</h2>
 
     <form action="#" th:action="@{/saveContact}" th:object="${contact}"
           method="POST">
@@ -29,12 +29,12 @@
               th:if="${#fields.hasErrors('email')}"
               th:errors="*{email}">Email error</span>
 
-        <input type="text" th:field="${*{mothers_name}" placeholder="Mother's name" class="form-control mb-4 col-4">
+        <input type="text" th:field="*{mothers_name}" placeholder="Mother's name" class="form-control mb-4 col-4">
         <span class="validationError"
               th:if="${#fields.hasErrors('mothers_name')}"
               th:errors="*{mothers_name}">Contact name error</span>
 
-        <input type="text" th:field="${#dates.format(*{birth_date}, 'yyyy-MM-dd')}" placeholder="Birth date" class="form-control mb-4 col-4">
+        <input type="text" th:field="*{birth_date}" placeholder="Birth date" class="form-control mb-4 col-4">
 
         <input type="text" th:field="*{social_number}" placeholder="Social number" class="form-control mb-4 col-4">
         <span class="validationError"
@@ -47,12 +47,17 @@
               th:errors="*{tax_number}">Contact name error</span>
 
         <button type="submit" class="btn btn-info col-2"> Update contact</button>
-    </form>
-    <p>
-    <a th:href="@{/anonymize/{id}(id=${contact.id})}"
-       class="btn btn-danger">Anonymize</a>
-    <p>
 
+
+    </form>
+    <hr>
+
+    <h4>Anonymize Contact</h4>
+
+    <a th:href="@{/anonymizeContact/{id}(id=${contact.id})}"
+       class="btn btn-danger">Anonymize</a>
+
+    <hr>
     <a th:href = "@{/}"> Back to Contact List</a>
 </div>
 </body>

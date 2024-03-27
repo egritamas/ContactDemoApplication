@@ -58,7 +58,7 @@ public class ContactController {
         return "redirect:/";
     }
 
-    @PostMapping("/contact/{id}/anonymize")
+    @GetMapping("/anonymizeContact/{id}")
     public String anonymize(@PathVariable Long id, Model model){
         contactService.anonymize(id);
         return "redirect:/";

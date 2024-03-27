@@ -1,6 +1,5 @@
 package hu.demo.contacts.entity;
 
-
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -17,7 +16,7 @@ import java.util.Date;
 public class Contact {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO, generator="contact_id_seq")
     private Long id;
 
     @Column(name = "name", nullable = true)

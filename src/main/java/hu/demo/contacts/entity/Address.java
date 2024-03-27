@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 public class Address {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO, generator="address_id_seq")
     private long id;
 
     @Column(name = "zip_code", nullable = true)
